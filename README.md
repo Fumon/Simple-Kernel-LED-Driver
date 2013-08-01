@@ -1,4 +1,5 @@
-#Simple Kernel Module
+Simple Kernel LED Driver
+=========================
 
 This is a simple loadable kernel module which I wrote to get familiar with some of the subsystems involved for an interview.
 
