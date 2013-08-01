@@ -19,9 +19,14 @@ MODULE_LICENSE("GPL");
 // Forward declaration
 struct kernel_param_ops sysfscb;
 
+#define INITIAL_TOGGLE_MILLIS 500
+
 // Time toggling LED in milliseconds.
 // Default to 500 ms.
-static ulong toggle_millis = 1000;
+#define INITIAL_TOGGLE_MILLIS 500
+
+static ulong toggle_millis = INITIAL_TOGGLE_MILLIS;
+
 // Register with sysfs.
 module_param_cb(toggle_millis, &sysfscb, &toggle_millis, 0644);
 __MODULE_PARM_TYPE(toggle_millis, "ulong");
@@ -30,7 +35,7 @@ static bool bbb = 0;
 module_param(bbb, bool, 0644);
 
 // Rememberd when high res timer is started.
-static ulong toggle_millis_cached = toggle_millis;
+static ulong toggle_millis_cached = INITIAL_TOGGLE_MILLIS;
 
 // High resolution led timer.
 static struct hrtimer led_toggle_timer;
